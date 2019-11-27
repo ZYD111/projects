@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 800px;
+            height: 100px;
+            margin: 500px auto 0;
+            background: #ccc;
+            position: relative;
+        }
+
+        span {
+            display: block;
+            width: 90px;
+            height: 90px;
+            border: 5px solid red;
+            background: burlywood;
+            text-align: center;
+            line-height: 90px;
+            font-size: 40px;
+            font-weight: 900;
+            position: absolute;
+            bottom: 0;
+        }
+
+        span:nth-child(2) {
+            left: 100px;
+        }
+
+        span:nth-child(3) {
+            left: 200px;
+        }
+
+        span:nth-child(4) {
+            left: 300px;
+        }
+
+        span:nth-child(5) {
+            left: 400px;
+        }
+
+        span:nth-child(6) {
+            left: 500px;
+        }
+
+        span:nth-child(7) {
+            left: 600px;
+        }
+
+        span:nth-child(8) {
+            left: 700px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>1</span>
+    </div>
+    <audio src=""></audio>
+   
+    <script>
+        var aSpan = document.querySelectorAll('span');
+        var audio = document.querySelector('audio');
+        var speed = 5;
+        document.onkeydown = function (e) {
+            //事件对象
+            e = e || window.event;
+            //获取ascii码
+            var code = e.keyCode || e.which;
+            //判断ascii码 （1 - 8按键）
+            switch (code) {
+                case 49: move(aSpan[0]);
+                    audio.src = './1.mp3';
+                    audio.autoplay = true;
+                    break;
+                case 50: move(aSpan[1]);
+                    audio.src = './2.mp3';
+                    audio.autoplay = true;
+                    break;
+                case 51: move(aSpan[2]);
+                    audio.src = './3.mp3';
+                    audio.autoplay = true;
+                    break;
+                case 52: move(aSpan[3]);
+                    audio.src = './4.mp3';
+                    audio.autoplay = true;
+                    break;
+                case 53: move(aSpan[4]);
+                    audio.src = './5.mp3';
+                    audio.autoplay = true;
+                    break;
+                case 54: move(aSpan[5]);
+                    audio.src = './6.mp3';
+                    audio.autoplay = true;
+                    break;
+                case 55: move(aSpan[6]);
+                    audio.src = './7.mp3';
+                    audio.autoplay = true;
+                    break;
+                case 56: move(aSpan[7]);
+                    audio.src = './1-1.mp3';
+                    audio.autoplay = true;
+            }
+        }
+
+        //高度的变化
+        function move(ele) {
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                ele.style.height = ele.offsetHeight + 20 + 'px';
+                if (ele.offsetHeight >= 500) {
+                    clearInterval(ele.timer);
+                    //回到初始height
+                    ele.style.height = '90px';
+                }
+            }, 30)
+            ele.style.background = randomColor();
+            ele.style.borderColor = randomColor();
+        }
+        //封装随机颜色
+        function randomColor() {
+            var
+                r = parseInt(Math.random() * 256),
+                g = parseInt(Math.random() * 256),
+                b = parseInt(Math.random() * 256);
+            return 'rgb(' + r + ',' + g + ',' + b + ')';
+        }
+
+    </script>
+</body>
+
+</html>
