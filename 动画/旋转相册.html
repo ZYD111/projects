@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+            height:100%;
+        }
+        body{
+            background:url(./img/bg2.jpg) no-repeat;
+            background-size:100% 100%;
+        }
+        section{
+            width:280px;
+            height:400px;
+            background:url(./img/a.gif) no-repeat center;
+            background-size:50% 50%;
+            position: fixed;
+            left:0;right:0;
+            top:0;bottom:0;
+            margin:auto;
+            /*形成一个3D空间*/
+            transform-style: preserve-3d;
+            /*调用关键帧*/
+            animation:imgRotate 20s linear infinite;
+        }
+
+
+
+        section div{
+            width:280px;
+            height:400px;
+            position:absolute;
+            background:orange;
+            /*改变变形原点*/
+            transform-origin:center center -600px;
+        }
+        section div img{
+            display:block;
+            width:100%;
+            height:100%;
+			transition: 1s;
+        }
+
+        section div:nth-child(1){
+            transform:translateZ(600px)
+        }
+        section div:nth-child(2){
+            transform:translateZ(600px) rotateY(36deg);
+        }
+        section div:nth-child(3){
+            transform:translateZ(600px) rotateY(72deg);
+        }
+        section div:nth-child(4){
+            transform:translateZ(600px) rotateY(108deg);
+        }
+        section div:nth-child(5){
+            transform:translateZ(600px) rotateY(144deg);
+        }
+        section div:nth-child(6){
+            transform:translateZ(600px) rotateY(180deg);
+        }
+        section div:nth-child(7){
+            transform:translateZ(600px) rotateY(216deg);
+        }
+        section div:nth-child(8){
+            transform:translateZ(600px) rotateY(252deg);
+        }
+        section div:nth-child(9){
+            transform:translateZ(600px) rotateY(288deg);
+        }
+        section div:nth-child(10){
+            transform:translateZ(600px) rotateY(324deg);
+        }
+
+        @keyframes imgRotate{
+            0%{
+                transform:rotateX(0deg) rotateY(0deg)
+            }
+            25%{
+                transform:rotateX(30deg) rotateY(180deg)
+            }
+            50%{
+                transform:rotateX(0deg) rotateY(360deg)
+            }
+            75%{
+                transform:rotateX(-30deg) rotateY(540deg)
+            }
+            100%{
+                transform:rotateX(0deg) rotateY(720deg)
+            }
+        }
+		
+		section:hover {
+			animation-play-state: paused;
+		}
+		section div:hover img{
+			transform: scale(1.5);
+		}
+    </style>
+</head>
+<body>
+    <section>
+        <div>
+            <img src="./img/pic1.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/pic2.png" alt="">
+        </div>
+        <div>
+            <img src="./img/pic3.png" alt="">
+        </div>
+        <div>
+            <img src="./img/pic4.png" alt="">
+        </div>
+        <div>
+            <img src="./img/pic5.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/pic6.png" alt="">
+        </div>
+        <div>
+            <img src="./img/pic7.png" alt="">
+        </div>
+        <div>
+            <img src="./img/pic8.png" alt="">
+        </div>
+        <div>
+            <img src="./img/pic9.png" alt="">
+        </div>
+        <div>
+            <img src="./img/pic10.png" alt="">
+        </div>
+    </section>
+</body>
+</html>

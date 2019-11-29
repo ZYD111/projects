@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width:800px;
+            height:400px;
+            margin:30px auto;
+            background:orange;
+            position:relative;
+        }
+        div{
+            width:100px;
+            height:100px;
+            background-color:blue;
+            border-radius: 50%;
+            position:absolute;
+            animation:ball 5s infinite alternate;
+        }
+
+
+        /* 制定关键帧 */
+        @keyframes ball{
+            0%{
+                left:0;top:0;
+            }
+            25%{
+                left:700px;top:0;
+            }
+            50%{
+                left:700px;top:300px;
+            }
+            75%{
+                left:0;top:300px;
+            }
+            100%{
+                left:0;top:0;
+            }
+        }
+        .box:hover div{
+            animation-play-state:paused;
+        }
+
+        /*
+            调用关键帧：
+                animation:关键帧的名称 动画的时间 延迟时间 运动的次数 运动类型 运动的方向（reverse、alternate）
+
+            控制动画的运行和停止：
+                animation-play-state:running/paused
+
+
+                无限循环  infinite
+        */
+    </style>
+</head>
+<body>
+    <section class="box">
+        <div></div>
+    </section>
+</body>
+</html>

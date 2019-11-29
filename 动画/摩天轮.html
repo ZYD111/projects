@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+            height:100%;
+        }
+        body{
+            background:url(./img3/2.jpg) no-repeat;
+            background-size: 100% 100%;
+        }
+        /*定义一个居中的样式*/
+        .fixed{
+            position: fixed;
+            left:0;right:0;
+            top:0;bottom:0;
+            margin:auto;
+        }
+        .fsw{
+            animation: rotate 20s infinite linear;
+            z-index: 10;
+        }
+        .pic1,.pic2{
+            position:fixed;
+            left:0;top:0;
+            right:0;bottom:0;
+            margin:auto auto 0;
+        }
+        .pic3{
+            z-index:12
+        }
+
+        .childBox{
+            width:768px;
+            height:768px;
+            z-index:11; 
+            animation: rotate 20s infinite linear;
+        }
+        .childBox img{
+            display:block;
+            position: absolute;
+            transform-origin: center 10px;
+            animation: rotate 20s infinite linear reverse;
+        }
+        .childBox img:nth-child(1){
+            left: 44%;
+            top: 5%;
+        }
+        .childBox img:nth-child(2){
+            left: 44%;
+            bottom: -10%;
+        }
+        .childBox img:nth-child(3){
+            left: -2%;
+            top: 45%;
+        }
+        .childBox img:nth-child(4){
+            right: -2%;
+            top: 45%;
+        }
+
+        .childBox img:nth-child(5){
+            left: 13%;
+            top: 15%;
+        }
+        .childBox img:nth-child(6){
+            right: 13%;
+            top: 15%;
+        }
+        .childBox img:nth-child(7){
+            left: 13%;
+            bottom: -2%;
+        }
+        .childBox img:nth-child(8){
+            right: 13%;
+            bottom: -2%;
+        }
+
+
+        @keyframes rotate{
+            0%{
+                transform:rotate(0deg);
+            }
+            100%{
+                transform:rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <img class="fixed fsw" src="./img3/fsw.png" alt="">
+    <img class="pic1" src="./img3/bracket.png" alt="">
+    <img class="pic2" src="./img3/bracketsmall.png" alt="">
+    <img class="pic3 fixed" src="./img3/big-title.png" alt="">
+
+    <div class="childBox fixed">
+        <img src="./img3/boy.png" alt="">
+        <img src="./img3/dog.png" alt="">
+        <img src="./img3/girl.png" alt="">
+        <img src="./img3/girls.png" alt="">
+        <img src="./img3/hairboy.png" alt="">
+        <img src="./img3/mimi.png" alt="">
+        <img src="./img3/mudog.png" alt="">
+        <img src="./img3/shamegirl.png" alt="">
+    </div>
+</body>
+</html>
