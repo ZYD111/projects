@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript" src="cookie.js">
+		</script>
+	  <h1>你好，<span></span>欢迎来到购物车页面</h1>
+	  <script>
+		  if(!getCookie("onul")==1){
+			  location.href="./deng.html";
+		  }
+		  if(getCookie("name")){
+			  var d=document.querySelector("span");
+			  d.innerHTML=getCookie("name");
+		  }
+	  </script>
+	</body>
+</html>
