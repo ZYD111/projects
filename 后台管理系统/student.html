@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			table{
+				width: 90%!important;
+				margin: 10px auto;
+			}
+			table th,table td{
+				text-align:center;
+				
+			}
+			table tr  button{
+				width: 60px;
+				height: 30px;
+				float: left;
+               padding: 0;
+				text-align: center;
+				margin-left:15% ;
+				
+			}
+			table thead tr{
+				background-color: #337ab7;
+			}
+			select_btn{
+				width: 50px;
+				height: 50px;
+			}
+			select{
+				background: #337AB7;
+				width: 50px;
+				height: 25px;
+			}
+			.select_box{
+				float: right;
+				margin-right:20px ;
+			}
+			
+		</style>
+		<link rel="stylesheet" href="//cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="//cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">添加学生信息</button>
+           <div class="select_box">   
+		   <select name="" id="">
+			   <option value ="stuid">学号</option>
+			   <option value ="name">姓名</option>
+			   <option value ="sex">性别</option>
+			   <option value ="old">年龄</option>
+			   <option value ="class">专业</option>
+		   </select>
+		   <input type="text" class="select_text">
+		   <input type="button" class="select_btn" value="搜索">
+		   </div>
+		
+           <table class="table table-hover">
+             <thead>
+               <tr>
+                 <th scope="col">编号</th>
+                 <th scope="col">学号</th>
+                 <th scope="col">姓名</th>
+                 <th scope="col">性别</th>
+				  <th scope="col">年龄</th>
+				  <th scope="col">专业</th>
+				  <th scope="col">操作</th>
+               </tr>
+             </thead>
+             <tbody class="databody">
+              <!-- <tr>
+                 <td >1</td>
+                 <td>Mark</td>
+                 <td>Otto</td>
+                 <td>@mdo</td>
+				 <td>@mdo</td>
+				 <td>@mdo</td>
+				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">修改</button>
+                    <button type="button" class="btn btn-success">删除</button></td>
+               </tr>
+               <tr>
+                 <td >2</td>
+                 <td>Jacob</td>
+                 <td>Thornton</td>
+                 <td>@fat</td>
+				 <td>@mdo</td>
+				 <td>@mdo</td>
+				 <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">修改</button>
+				      <button type="button" class="btn btn-success">删除</button></td>
+				 
+               </tr>
+               <tr>
+                 <td >3</td>
+                 <td >Larry the Bird</td>
+                 <td>@twitter</td>
+				 <td>@mdo</td>
+				 <td>@mdo</td>
+				 <td>@mdo</td>
+				 <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">修改</button>
+				      <button type="button" class="btn btn-success">删除</button></td>
+				 
+               </tr> -->
+             </tbody>
+         </table>
+		 
+		 
+		 
+		 
+		 
+		 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		   <div class="modal-dialog" role="document">
+		     <div class="modal-content">
+		       <div class="modal-header">
+		         <h5 class="modal-title" id="exampleModalLabel">添加框</h5>
+		         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		           <span aria-hidden="true">&times;</span>
+		         </button>
+		       </div>
+		       <div class="modal-body">
+		         <form>
+		           <div class="form-group">
+		             <label for="recipient-name" class="col-form-label">学号:</label>
+		             <input type="text" class="form-control stuId" id="recipient-name">
+		           </div>
+		           <div class="form-group">
+		             <label for="message-text" class="col-form-label">姓名:</label>
+		             <input type="text" class="form-control stuName" id="recipient-name">
+		           </div>
+				   <div class="form-group">
+				     <label for="message-text" class="col-form-label">性别:</label>
+				     <input type="text" class="form-control stuSex" id="recipient-name">
+				   </div>
+				   <div class="form-group">
+				     <label for="message-text" class="col-form-label">年龄:</label>
+				     <input type="text" class="form-control stuAge" id="recipient-name">
+				   </div>
+				   <div class="form-group">
+				     <label for="message-text" class="col-form-label">专业:</label>
+				     <input type="text" class="form-control stuMagor" id="recipient-name">
+				   </div>
+		         </form>
+		       </div>
+		       <div class="modal-footer">
+		         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		         <button type="button" class="btn btn-primary add">添加</button>
+		       </div>
+		     </div>
+		   </div>
+		 </div>
+		 
+		 
+		 
+		 <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+		   <div class="modal-dialog" role="document">
+		     <div class="modal-content">
+		       <div class="modal-header">
+		         <h5 class="modal-title" id="exampleModalLabel">修改框</h5>
+		         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		           <span aria-hidden="true">&times;</span>
+		         </button>
+		       </div>
+		       <div class="modal-body">
+		         <form>
+		           <div class="form-group">
+		             <label for="recipient-name" class="col-form-label ">学号:</label>
+		             <input type="text" class="form-control upid" id="recipient-name">
+		           </div>
+		           <div class="form-group">
+		             <label for="message-text" class="col-form-label upname">姓名:</label>
+		             <input type="text" class="form-control upname" id="recipient-name">
+		           </div>
+		 				   <div class="form-group">
+		 				     <label for="message-text" class="col-form-label upsex">性别:</label>
+		 				     <input type="text" class="form-control upsex" id="recipient-name">
+		 				   </div>
+		 				   <div class="form-group">
+		 				     <label for="message-text" class="col-form-label upage">年龄:</label>
+		 				     <input type="text" class="form-control upage" id="recipient-name">
+		 				   </div>
+		 				   <div class="form-group">
+		 				     <label for="message-text" class="col-form-label upmajor">专业:</label>
+		 				     <input type="text" class="form-control upmajor" id="recipient-name">
+		 				   </div>
+						   <input type="hidden" class="getId">
+		         </form>
+		       </div>
+		       <div class="modal-footer">
+		         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		         <button type="button" class="btn btn-primary upBtn">修改</button>
+		       </div>
+		     </div>
+		   </div>
+		 </div>
+		 <script src="js/student.js">
+		 </script>
+		 <script src="js/ajax.js"></script>
+		<script src="js/del.js"> </script>
+		<script src="js/add.js?a=1122"></script>
+		<script src="js/search.js"></script>
+		<script type="text/javascript" src="js/cookie.js">
+		</script>
+		<script src="js/updata.js?b=222"></script>
+		<script src="js/updataGet.js?c=11"></script>
+		 <script>
+				// var on=document.querySelectorAll('.btn-success');
+				// for(var i=0;i<on.length;i++){
+				// on[i].onclick=function(){
+				// 	var e=e || window.event;
+				// 	var target=event.target||event.srcElement;
+				// 	target.parentNode.parentNode.remove();
+				// 	console.log(e);
+				// 	console.log(target.type);
+				// 	console.log('yes');
+				// }
+				// }
+				
+				student();
+				del();
+				add();
+				updata();
+				if(!getCookie('isLogin')){
+				    location.href='./dengru.html';
+				}
+		 </script>
+	</body>
+</html>
