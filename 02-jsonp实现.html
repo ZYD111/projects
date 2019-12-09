@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //创建一个全局函数
+        function handle(d){
+            console.log(d);
+        }    
+        document.onclick = function(){
+            //创建script标签
+            var createScript = document.createElement('script');
+            //添加src属性
+            //src得值为jsonp接口
+            //接口地址后面要拼接得是callback参数（注：百度得jsonp接口：cb）
+            createScript.src = 'http://api.asilu.com/fanyi?callback=handle&q=red';
+            //添加在body里面
+            document.body.appendChild(createScript);
+            //避免页面标签得冗余，请求完毕之后，把script标签删除
+            //当script加载完毕之后，把他移除。
+            createScript.onload = function(){
+                this.remove();
+            }
+        }
+
+
+        /*
+            
+        手机号查询：https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=手机号
+        淘宝搜索：http://suggest.taobao.com/sug?code=utf-8&q=单反&callback=回调函数名
+        百度搜索：http://suggestion.baidu.com/su?wd=手机&cb=回调函数名）
+        必应壁纸：http://api.asilu.com/bg?callback=回调函数名
+        英译汉：http://api.asilu.com/fanyi?callback=回调函数名&q=翻译的内容
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    #box {
+        width: 1200px;
+        margin: 0 auto;
+    }
+
+    #box li {
+        float: left;
+        width: 210px;
+        height: 250px;
+        border: 1px solid #c2c2c2;
+        margin-left: 20px;
+        background: #fff;
+        box-shadow: 2px 3px 1px #c1c1c1;
+        margin-bottom: 10px;
+    }
+
+    #box li img {
+        width: 100%;
+        height: auto;
+    }
+
+    #box li h4 {
+        float: left;
+        display: block;
+        font-size: 18px;
+        margin-left: 5px;
+        margin-top: 3px;
+    }
+
+    #box li span {
+        float: left;
+        display: block;
+        font-size: 18px;
+        font-family: "微软雅黑";
+        margin-left: 8px;
+    }
+
+    #box li a {
+        float: left;
+        display: block;
+        width: 80px;
+        height: 30px;
+        background: red;
+        border: 1px;
+        font-size: 14px;
+        border-radius: 10px;
+        text-align: center;
+        color: #fff;
+        line-height: 30px;
+        margin-left: 15px;
+
+    }
+
+    .btnList {
+        position: absolute;
+        top: 622px;
+        left: 400px;
+    }
+
+    .btnList a {
+        display: inline-block;
+        width: 50px;
+        height: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 5px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .btnList a:hover {
+        background: #ddd;
+    }
+
+    .code1 {
+        background: orange
+    }
+</style>
+
+<body>
+    <ul id="box">
+        <!-- <li>
+            <img src="img/1.jpg">
+            <h4>面包</h4>
+            <span>6$</span>
+            <a href="#">加入购物车</a>
+        </li> -->
+    </ul>
+    <div class="btnList">
+        <a class="first" href="##">上一页</a>
+        <a class="last" href="##">下一页</a>
+    </div>
+
+    <script src="./ajax.js"></script>
+    <script>
+        var
+            oBox = document.querySelector('#box'),
+            oBtnFirst = document.querySelector('.first'),
+            oBtnLast = document.querySelector('.last'),
+            oBtnList = document.querySelector('.btnList'),
+            count = 1;
+        //获取数据
+        ajax({
+            type: 'get',
+            url: './product.json',
+            data: {},
+            success: function (d) {
+                d = JSON.parse(d);
+                //页数  向上取整
+                var page = Math.ceil(d.length / 6);
+               
+                //分页的数据渲染
+                function renderData(pageNum) {
+                    //初始化空字符串
+                    var str = '';
+                    //取最小值  Math.min(数据的个数，pageNum * 6)  
+                    for (var i = (pageNum - 1) * 6; i < Math.min(d.length,pageNum * 6); i++) {
+                        //字符串拼接
+                        str +=  `<li>
+                            <img src="${d[i].images}">
+                            <h4>${d[i].title}</h4>
+                            <span>${d[i].price}</span>
+                            <a href="#">加入购物车</a>
+                        </li>
+                        `
+                    }
+                    //把数据放在页面上box里面
+                    oBox.innerHTML = str;
+                }
+                //第一次调用 第一页
+                renderData(1);
+
+                //添加按钮：根据页数添加按钮数量
+                for(var i = 0 ; i < page ; i++){
+                    var createA = document.createElement('a');
+                    createA.innerHTML = i + 1;
+                    //添加到 last按钮的前面
+                    oBtnList.insertBefore(createA,oBtnLast);
+                }
+
+                //给a添加事件
+                //获取所有的a
+                var aBtn = document.querySelectorAll('.btnList a');
+                //事件绑定，排除first  last
+                for(var i = 1 ; i < aBtn.length - 1 ; i++){
+                    aBtn[i].onclick = function(){
+                        //获取按钮的文本 1  2  3  4......btnList
+                        //调用数据渲染方法
+                        renderData(this.innerHTML);
+                        //count更改
+                        count = this.innerHTML;
+                    }
+                }
+
+
+
+                //翻页
+                oBtnFirst.onclick = function(){
+                    if(count <= 1){
+                        count = 1;
+                    }else{
+                        count--;
+                    }
+                    renderData(count);
+                }
+
+                oBtnLast.onclick = function(){
+                    if(count >= page){
+                        count = page;
+                    }else{
+                        count++;
+                    }
+                    console.log(count)
+                    renderData(count);
+                }
+            }
+        })
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--
+        分页的思路：
+            1：数据（数据库、json）
+            2:每个页面确定商品的数量  每页6个数据。
+            3：总数据的长度 / 每个页面的数量 == 页数。
+                页数如果不是整数，需要向上取整：Math.ceil()
+
+            4:页数确定：按钮数量确定。
+            5：数据渲染！！！
+                数据的索引值 0 开始
+                
+                第一页数据：
+                for(var i = 0 ; i < 6 ; i++){
+
+                }
+
+                第二页数据：
+                for(var i = 6 ; i < 12 ; i++){
+
+                }
+
+                第三页数据:
+                for(var i = 12 ; i < 18 ; i++){
+
+                }
+
+                第N页数据：
+                for(var i = (n - 1)*6 ; i < n * 6 ; i++){
+
+                }
+
+            6:上一页  下一页
+    -->
+</body>
+
+</html>

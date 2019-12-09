@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input{
+            display:block;
+            width:400px;
+            height:50px;
+            font-size:30px;
+            margin:50px auto 0;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="请输入商品名称" list="dList">
+    <datalist id="dList">
+        
+    </datalist>
+
+    <script>
+        var oInput = document.querySelector('input');
+        var dList = document.querySelector('#dList');
+        //全局函数取数据
+        function handle(d){
+            //获取数据的长度  根据长度创建option的个数
+            var dLength = d.result.length;
+            var str = '';
+            for(var i = 0 ; i < dLength ; i++){
+                str += "<option value='"+d.result[i][0]+"'>";
+            }
+            //把str给dList.innerHTML;
+            dList.innerHTML = str;
+        }
+        //监测文本框内容得更改事件
+        oInput.oninput = function(){
+            //获取输入框得内容
+            var txt = this.value;
+            //拿到数据（jsonp接口）
+            var createS = document.createElement('script');
+            createS.src = "http://suggest.taobao.com/sug?code=utf-8&q="+txt+"&callback=handle";
+            document.body.appendChild(createS);
+            createS.onload = function(){
+                this.remove();
+            }
+        }
+    </script>
+</body>
+</html>

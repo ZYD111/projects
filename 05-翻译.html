@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        textarea{
+            display:block;
+            float:left;
+            width:400px;
+            height:300px;
+            border:3px solid orange;
+            font-size:30px;
+            margin:0 30px;
+            resize: none;
+        }
+        h2{float:left;}
+    </style>
+</head>
+<body>
+    <h2>输入</h2>
+    <textarea name="" class="txt1"></textarea>
+    <h2>翻译</h2>
+    <textarea name="" class="txt2"></textarea>
+
+    <script>
+        /*
+            需求：
+                根据输入的内容，翻译放在右侧标签内
+        */
+
+        var 
+            txt1 = document.querySelector('.txt1'),
+            txt2 = document.querySelector('.txt2');
+
+        //全局函数
+        function handle(d){
+            //取到数据放在txt2里面
+            txt2.value = d.data;
+        }
+        //当第一个输入框失去焦点的时候开始数据请求
+        txt1.onblur = function(){
+            //如果txt1不为空的情况下，再进行翻译
+            if(txt1.value){
+                var createS = document.createElement('script');
+                createS.src = 'http://api.asilu.com/fanyi?callback=handle&q=' + txt1.value;
+                document.body.appendChild(createS);
+                createS.onload = function(){
+                    this.remove();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

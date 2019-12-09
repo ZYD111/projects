@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2318959358,784481005&fm=26&gp=0.jpg" alt="">
+    <script src="./ajax.js"></script>
+    <script>
+        // ajax({
+        //     type :"get",
+        //     //访问：通过localhost访问， 接口域名为127.0.0.1。 触发了浏览器得同源策略。
+        //     url:'http://127.0.0.1/1+x/ajax2/1.txt',
+        //     data:{},
+        //     success : function(d){
+        //         console.log(d);
+        //     }
+        // })
+
+
+
+        /*
+            同源策略：
+                为了安全：浏览器规定：当 协议、域名、端口号 其中有一个不同得时候，会触发浏览器得同源策略，禁止相互之间得访问。
+
+
+
+            跨域:
+                jsonp 跨域
+                cors 跨域
+                代理（正向代理、反向代理）
+
+
+            JSON 和 jsonp
+                json  一种轻量级得数据格式
+                jsonp 是解决跨域得一种手段。
+
+
+
+
+            JSONP跨域：
+                原理：
+                    利用了script标签 src属性不受同源策略得影响。
+
+                
+            jsonp具体得实现流程。
+                1：创建全局函数：处理接口返回得数据（带到后端，后端得数据传递）
+                2：动态创建script标签
+                3：给script标签添加scr属性，属性值为jsonp接口。
+                4：在接口地址后面拼接参数 callback=全局函数得名称
+                5:把script添加在body里面。
+                6：移除动态创建得script标签。
+        */
+    </script>
+</body>
+</html>

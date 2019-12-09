@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+            height:100%;
+        }
+        .btn{
+            display:block;
+            width:150px;
+            height:30px;
+            border-radius: 10px;
+            position: absolute;
+            top:10px;
+            left:100px;
+            text-align: center;
+            line-height:30px;
+            background:linear-gradient(#fff,lightblue);
+            opacity: 0.9;
+            color:#FFF;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 3px 7px 8px 1px lightblue;
+        }
+    </style>
+</head>
+<body>
+    <span class="btn">一键换肤</span>
+    <script>
+        var oBtn = document.querySelector('.btn');
+        function handle(d){
+            // console.log(d.images);
+            //封装一个更改body背景的方法
+            function changeBg(num){
+                document.body.style.background = "url("+d.images[num].url+") no-repeat 100% 100%";
+            }
+            changeBg(0);
+            //随机切换
+            oBtn.onclick = function(){
+                //根据d.images.length生成一个随机数
+                var randomNum = parseInt(Math.random() * d.images.length);
+                changeBg(randomNum)
+            }
+
+        }
+        //请求数据
+        var createS = document.createElement('script');
+        createS.src = 'http://api.asilu.com/bg?callback=handle';
+        document.body.appendChild(createS);
+        createS.onload = function(){
+            this.remove();
+        }
+    </script>
+</body>
+</html>
